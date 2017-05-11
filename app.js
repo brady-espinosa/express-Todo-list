@@ -26,6 +26,11 @@ app.get('/new-list', function (request, response){
   response.render('new-list')
 })
 
+app.get('/new-todo', function (request, response){
+  // show a page with inputs for a new todo item
+  response.render('new-todo')
+})
+
 app.post('/save-list', function(request, response){
   // read the body
   console.log(request.body.event)
