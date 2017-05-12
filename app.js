@@ -26,9 +26,10 @@ app.get('/new-list', function (request, response){
   response.render('new-list')
 })
 
-app.get('/new-todo', function (request, response){
+app.get('/new-todo/:id', function (request, response){
   // show a page with inputs for a new todo item
-  response.render('new-todo')
+  
+  response.render('new-todo', {"listId": request.params.id})
 })
 
 app.post('/save-list', function(request, response){
@@ -41,6 +42,20 @@ app.post('/save-list', function(request, response){
     time: request.body.time
   }).then(function(list){
     // redirect to the home page
+    response.redirect("/")
+  })
+})
+
+app.post('/save-todo/:id', function(request, response){
+  // read the body
+  console.log("save body", request.body.description)
+  // save a new database record
+  Todo.create({
+    description: request.body.description,
+    listId:(request.params.id),
+    completed: false
+  }).then(function(list){
+    // redirect to the show-list page
     response.redirect("/")
   })
 })

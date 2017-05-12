@@ -1,7 +1,7 @@
-<form class="form" action="/save-todo" method="post">
+<form class="form" action="/save-todo/<%=listId%>" method="post">
   <div>
-    <label for="thing">What do you have to do?</label>
-    <input type="text" name="thing" value="">
+    <label for="description">What do you have to do?</label>
+    <input type="text" name="description" value="">
   </div>
   <input type="submit" name="" value="Create" class="btn btn-primary">
 </form>
